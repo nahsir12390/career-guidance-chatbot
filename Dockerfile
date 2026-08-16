@@ -1,4 +1,4 @@
-FROM php:8.3-cli
+FROM php:8.4-cli
 
 WORKDIR /var/www/html
 
@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     sqlite3 \
     libsqlite3-dev \
+    nodejs \
+    npm \
     zip \
     && docker-php-ext-install pdo pdo_sqlite mbstring exif pcntl gd zip
 
