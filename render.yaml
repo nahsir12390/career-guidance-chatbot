@@ -7,11 +7,7 @@ services:
       chmod +x render-build.sh
       ./render-build.sh
     startCommand: |
-      mkdir -p /var/data
-      touch /var/data/database.sqlite
-      php artisan key:generate --force --no-interaction || true
-      php artisan migrate --force
-      php artisan serve --host 0.0.0.0 --port $PORT
+      sh ./docker-start.sh
     envVars:
       - key: APP_ENV
         value: production

@@ -26,11 +26,9 @@ RUN mkdir -p /var/data \
     && composer install --no-interaction --prefer-dist --no-progress --optimize-autoloader --no-dev \
     && npm install \
     && npm run build \
-    && php artisan config:cache \
     && php artisan route:cache \
-    && php artisan view:cache \
-    && php artisan migrate --force
+    && php artisan view:cache
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "mkdir -p /var/data && touch /var/data/database.sqlite && (php artisan key:generate --force --no-interaction || true) && php artisan migrate --force && php artisan serve --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["sh", "./docker-start.sh"]
