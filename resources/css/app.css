@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+@import '../../vendor/livewire/flux/dist/flux.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-zinc-50: #fafafa;
+    --color-zinc-100: #f5f5f5;
+    --color-zinc-200: #e5e5e5;
+    --color-zinc-300: #d4d4d4;
+    --color-zinc-400: #a3a3a3;
+    --color-zinc-500: #737373;
+    --color-zinc-600: #525252;
+    --color-zinc-700: #404040;
+    --color-zinc-800: #262626;
+    --color-zinc-900: #171717;
+    --color-zinc-950: #0a0a0a;
+
+    --color-accent: var(--color-neutral-800);
+    --color-accent-content: var(--color-neutral-800);
+    --color-accent-foreground: var(--color-white);
+}
+
+@layer theme {
+    .dark {
+        --color-accent: var(--color-white);
+        --color-accent-content: var(--color-white);
+        --color-accent-foreground: var(--color-neutral-800);
+    }
+}
+
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+@layer components {
+    .career-app {
+        --career-ink: #18232b;
+        --career-muted: #68757a;
+        --career-paper: #f4f1eb;
+        --career-line: #dedbd4;
+        --career-lime: #c7e86a;
+        --career-coral: #f27a5b;
+        background: var(--career-paper);
+        color: var(--career-ink);
+        font-family: 'Manrope', sans-serif;
+        background-image: radial-gradient(#c8c3b9 0.7px, transparent 0.7px);
+        background-size: 18px 18px;
+    }
+
+    .career-header {
+        align-items: center;
+        border-bottom: 1px solid rgba(24, 35, 43, .13);
+        display: flex;
+        justify-content: space-between;
+        margin: 0 auto;
+        max-width: 1500px;
+        padding: 22px clamp(20px, 4vw, 64px);
+    }
+
+    .career-brand {
+        align-items: center;
+        color: var(--career-ink);
+        display: flex;
+        font-size: 13px;
+        font-weight: 800;
+        gap: 10px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+    }
+
+    .career-brand em { color: var(--career-coral); font-style: normal; }
+    .career-brand-mark {
+        align-items: center;
+        background: var(--career-ink);
+        border-radius: 50%;
+        color: var(--career-lime);
+        display: flex;
+        height: 32px;
+        justify-content: center;
+        width: 32px;
+    }
+    .career-header-meta {
+        align-items: center;
+        color: var(--career-muted);
+        display: flex;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        gap: 9px;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+    }
+    .career-header-meta a { color: var(--career-ink); font-weight: 500; margin-left: 18px; text-decoration: underline; text-underline-offset: 4px; }
+    .career-status-dot { background: #7db63d; border-radius: 50%; height: 7px; width: 7px; }
+
+    .career-layout { max-width: 1500px; }
+    .career-kicker { color: var(--career-coral); font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; }
+    .career-number { color: var(--career-coral); font-family: 'DM Mono', monospace; font-size: 11px; }
+    .career-display { font-size: clamp(2.4rem, 5vw, 5rem); font-weight: 800; letter-spacing: -.07em; line-height: .98; }
+    .career-panel { border: 1px solid var(--career-line); box-shadow: 0 18px 38px rgba(24, 35, 43, .07); }
+    .career-field { background: #faf9f5; border: 1px solid #d9d7d0; border-radius: 3px; color: var(--career-ink); padding: 12px 13px; width: 100%; }
+    .career-field:focus { border-color: var(--career-coral); box-shadow: 0 0 0 3px rgba(242, 122, 91, .14); outline: none; }
+    .career-label { color: var(--career-muted); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; }
+    .career-button { align-items: center; background: var(--career-ink); border-radius: 3px; color: white; display: inline-flex; font-size: 12px; font-weight: 800; justify-content: center; padding: 13px 16px; transition: transform .2s, background .2s; }
+    .career-button:hover { background: #273842; transform: translateY(-1px); }
+    .career-button-accent { background: var(--career-lime); color: var(--career-ink); }
+    .career-button-accent:hover { background: #d4f381; }
+    .career-button-quiet { background: transparent; border: 1px solid var(--career-line); color: var(--career-ink); }
+    .career-button-quiet:hover { background: white; }
+    .career-chat { background: var(--career-ink); color: white; }
+    .career-chat-bot { background: #f8f6f1; color: var(--career-ink); }
+    .career-chat-user { background: var(--career-coral); color: white; }
+    .career-chip { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: 2px; color: #d9e0dc; font-family: 'DM Mono', monospace; font-size: 10px; padding: 8px 10px; }
+    .career-chip:hover { background: rgba(199,232,106,.16); color: var(--career-lime); }
+}
+
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply  !mb-0 !leading-tight;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
+
+/* \[:where(&)\]:size-4 {
+    @apply size-4;
+} */
