@@ -21,7 +21,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 COPY . /var/www/html
 
-RUN composer install --no-interaction --prefer-dist --no-progress --optimize-autoloader --no-dev \
+RUN mkdir -p /var/data \
+    && touch /var/data/database.sqlite \
+    && composer install --no-interaction --prefer-dist --no-progress --optimize-autoloader --no-dev \
     && npm install \
     && npm run build \
     && php artisan config:cache \
@@ -31,4 +33,4 @@ RUN composer install --no-interaction --prefer-dist --no-progress --optimize-aut
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "php artisan serve --host 0.0.0.0 --port ${PORT:-8000}"]
+CMD ["sh", "-c", "mkdir -p /var/data && touch /var/data/database.sqlite && (php artisan key:generate --force --no-interaction || true) && php artisan migrate --force && php artisan serve --host 0.0.0.0 --port ${PORT:-8000}"]
