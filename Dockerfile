@@ -26,7 +26,6 @@ RUN mkdir -p /var/data \
     && composer install --no-interaction --prefer-dist --no-progress --optimize-autoloader --no-dev \
     && npm install \
     && npm run build \
-    && php artisan route:cache \
     && php artisan view:cache
 
 EXPOSE 8000
